@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- User Info Title -->
+        <TextView
+            android:id="@+id/infoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Info"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="sans-serif-medium"/>
+
+        <!-- Username Display -->
+        <TextView
+            android:id="@+id/UserNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif"/>
+
+        <EditText
+            android:id="@+id/editUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Enter your username"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:background="@drawable/edit_text_background"/>
+
+        <!-- Location Display -->
+        <TextView
+            android:id="@+id/locationLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif"/>
+
+        <EditText
+            android:id="@+id/editLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Enter your location"
+            android:importantForAutofill="no"
+            android:inputType="textShortMessage"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:background="@drawable/edit_text_background"/>
+
+        <!-- Phone Number Display -->
+        <TextView
+            android:id="@+id/phoneLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif"/>
+
+        <EditText
+            android:id="@+id/editPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:hint="Enter your phone number"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:background="@drawable/edit_text_background"/>
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textSize="18sp"
+            android:backgroundTint="@color/blue"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-medium"/>
+
+    </LinearLayout>
+</ScrollView>
