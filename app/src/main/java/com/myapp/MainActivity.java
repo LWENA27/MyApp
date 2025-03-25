@@ -1,47 +1,41 @@
 package com.myapp;
 
-import android.content.Intent;
-import android.database.Cursor;
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText usernameInput, locationInput, phoneInput;
-    private UserDatabaseHelper dbHelper;
+    private static final int SMS_PERMISSION_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        usernameInput = findViewById(R.id.usernameInput);
-        locationInput = findViewById(R.id.locationInput);
-        phoneInput = findViewById(R.id.phoneInput);
-        dbHelper = new UserDatabaseHelper(this);
-
-        findViewById(R.id.submitButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveUserData();
-            }
-        });
-
-        findViewById(R.id.userInfoButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MyInfoActivity.class);
-                startActivity(intent);
-            }
-        });
+        // Request SMS permissions
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.RECEIVE_SMS,
+                    Manifest.permission.SEND_SMS,
+                    Manifest.permission.READ_SMS
+            }, SMS_PERMISSION_CODE);
+        }
     }
 
-    private void saveUserData() {
-        String username = usernameInput.getText().toString();
-        String location = locationInput.getText().toString();
-        String phone = phoneInput.getText().toString();
-
-        dbHelper.addUser(username, location, phone);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == SMS_PERMISSION_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "SMS permissions granted!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "SMS permissions denied!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
