@@ -9,11 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Logger;
+
 public class MainActivity extends AppCompatActivity {
     private static final int SMS_PERMISSION_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
