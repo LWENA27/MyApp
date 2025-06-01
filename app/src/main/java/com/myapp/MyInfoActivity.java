@@ -11,7 +11,7 @@ public class MyInfoActivity extends AppCompatActivity {
     private EditText editUsername, editLocation, editPhoneNumber;
     private UserDatabaseHelper dbHelper;
 
-    @Override
+  
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_info);
